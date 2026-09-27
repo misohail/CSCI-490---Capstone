@@ -1,1 +1,27 @@
-CipherAudit | Privacy-Safe Password Auditor
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Privacy-safe password strength and breach checker">
+    <title>PrivacySafe Password Auditor</title>
+
+    <link rel="stylesheet" href="{% static 'auditor/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/intro.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/how-it-works.css' %}">
+</head>
+<body>
+    {% include 'auditor/components/navbar.html' %}
+
+    <main class="wrap">
+        {% include 'auditor/components/intro.html' %}
+        {% include 'auditor/components/how_it_works.html' %}
+    </main>
+
+    {% include 'auditor/components/footer.html' %}
+
+    <script src="{% static 'auditor/app.js' %}" defer></script>
+</body>
+</html>

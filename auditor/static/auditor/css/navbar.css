@@ -1,0 +1,29 @@
+header,
+footer {
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+}
+
+.nav {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav b {
+    font-size: 1.05rem;
+}
+
+.nav span {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+footer {
+    padding: 26px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 0;
+    color: var(--muted);
+    font-size: 0.78rem;
+}

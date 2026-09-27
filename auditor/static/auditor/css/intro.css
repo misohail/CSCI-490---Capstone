@@ -1,0 +1,33 @@
+.intro {
+    max-width: 760px;
+    padding: 72px 0 38px;
+}
+
+.intro small {
+    color: var(--blue);
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+.intro h1 {
+    margin: 12px 0;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1;
+    letter-spacing: -0.055em;
+}
+
+.intro em {
+    color: var(--blue);
+    font-style: normal;
+}
+
+.intro p {
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+@media (max-width: 720px) {
+    .intro {
+        padding-top: 52px;
+    }
+}

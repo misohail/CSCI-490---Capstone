@@ -1,0 +1,57 @@
+.how {
+    padding-bottom: 60px;
+}
+
+.how > small {
+    color: var(--blue);
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+.how h2 {
+    font-size: 2.5rem;
+    letter-spacing: -0.04em;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.steps article {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+}
+
+.steps b {
+    color: var(--blue);
+}
+
+.steps h3 {
+    margin: 18px 0 6px;
+    font-size: 1rem;
+}
+
+.steps p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.notice {
+    margin-bottom: 70px;
+    padding: 16px;
+    background: #fff;
+    border-left: 4px solid var(--blue);
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+@media (max-width: 720px) {
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}

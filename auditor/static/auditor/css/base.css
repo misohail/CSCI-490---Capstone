@@ -1,0 +1,30 @@
+:root {
+    --bg: #f6f8fb;
+    --card: #fff;
+    --text: #101828;
+    --muted: #667085;
+    --line: #dfe4ea;
+    --blue: #1d4ed8;
+    --green: #087443;
+    --red: #b42318;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.wrap {
+    width: min(1050px, calc(100% - 32px));
+    margin: auto;
+}
+
+.hidden {
+    display: none;
+}
