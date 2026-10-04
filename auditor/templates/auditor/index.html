@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="{% static 'auditor/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'auditor/css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'auditor/css/intro.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/auditor-card.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/card-header.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/password-input.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/password-stats.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/password-checks.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/strength-meter.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/action-buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/breach-result.css' %}">
     <link rel="stylesheet" href="{% static 'auditor/css/how-it-works.css' %}">
 </head>
 <body>
@@ -17,11 +25,12 @@
 
     <main class="wrap">
         {% include 'auditor/components/intro.html' %}
+        {% include 'auditor/components/auditor-card.html' %}
         {% include 'auditor/components/how_it_works.html' %}
     </main>
 
     {% include 'auditor/components/footer.html' %}
 
-    <script src="{% static 'auditor/app.js' %}" defer></script>
+    <script src="{% static 'auditor/js/app.js' %}" defer></script>
 </body>
 </html>

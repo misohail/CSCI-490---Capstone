@@ -1,0 +1,35 @@
+.result {
+    display: flex;
+    gap: 13px;
+    margin-top: 14px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+.result > strong {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    flex-shrink: 0;
+    background: #ecfdf3;
+    color: var(--green);
+    border-radius: 50%;
+}
+
+.result.pwned > strong {
+    background: #fef3f2;
+    color: var(--red);
+}
+
+.result h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.result p {
+    margin: 4px 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+}

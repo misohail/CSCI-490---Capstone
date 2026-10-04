@@ -1,0 +1,9 @@
+.card {
+    max-width: 780px;
+    margin-bottom: 80px;
+    padding: clamp(22px, 4vw, 38px);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 20px 50px #10182812;
+}
