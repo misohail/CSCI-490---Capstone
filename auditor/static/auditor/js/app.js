@@ -12,6 +12,10 @@
     const strength = document.getElementById("strength");
     const bar = document.getElementById("bar");
 
+    const feedbackBox = document.getElementById("passwordFeedback");
+    const feedbackWarning = document.getElementById("feedbackWarning");
+    const feedbackSuggestions = document.getElementById("feedbackSuggestions");
+
     const len = document.getElementById("len");
     const variety = document.getElementById("variety");
     const entropy = document.getElementById("entropy");
@@ -97,8 +101,8 @@
         return Math.round(value.length * Math.log2(pool));
     }
 
-    // Evaluates password strength and assigns a score level
-    function calculateStrength(value) {
+    // Evaluates password strength and integrates zxcvbn pattern penalties
+    function calculateStrength(value, zxcvbnScore = 4) {
         if (!value) {
             return {
                 name: "—",
@@ -136,6 +140,11 @@
             score++;
         }
 
+        // If zxcvbn detects a trivial dictionary word, sequence, or spatial walk, penalize score
+        if (zxcvbnScore <= 1) {
+            score = Math.min(score, 2);
+        }
+
         if (score <= 2) {
             return {
                 name: "Weak",
@@ -163,9 +172,39 @@
         };
     }
 
-    // Refreshes all UI text, meters, and checklists as the user types
+    // Displays warnings and actionable advice from zxcvbn
+    function renderFeedback(feedback) {
+        if (!feedbackBox || !feedbackWarning || !feedbackSuggestions) {
+            return;
+        }
+
+        const warning = feedback ? feedback.warning : "";
+        const suggestions = (feedback && feedback.suggestions) ? feedback.suggestions : [];
+
+        if (!warning && suggestions.length === 0) {
+            feedbackBox.classList.add("hidden");
+            feedbackWarning.textContent = "";
+            feedbackSuggestions.innerHTML = "";
+            return;
+        }
+
+        feedbackWarning.textContent = warning ? `⚠️ ${warning}` : "";
+        feedbackSuggestions.innerHTML = suggestions
+            .map(item => `<li>${item}</li>`)
+            .join("");
+
+        feedbackBox.classList.remove("hidden");
+    }
+
+    // Refreshes all UI text, meters, checklists, and pattern feedback
     function updatePasswordStats() {
         const value = password.value;
+
+        // Run zxcvbn analysis locally if script is loaded
+        let zxcvbnResult = null;
+        if (typeof zxcvbn === "function" && value) {
+            zxcvbnResult = zxcvbn(value);
+        }
 
         const upper = hasUppercase(value);
         const lower = hasLowercase(value);
@@ -180,7 +219,10 @@
         ].filter(Boolean).length;
 
         const entropyValue = calculateEntropy(value);
-        const strengthValue = calculateStrength(value);
+        const strengthValue = calculateStrength(
+            value,
+            zxcvbnResult ? zxcvbnResult.score : 4
+        );
 
         len.textContent = value.length;
         variety.textContent = `${varietyCount}/4`;
@@ -190,6 +232,9 @@
 
         const percentage = (strengthValue.score / 4) * 100;
         bar.style.width = `${percentage}%`;
+
+        // Render zxcvbn warnings/suggestions
+        renderFeedback(zxcvbnResult ? zxcvbnResult.feedback : null);
 
         updateCheck(
             checks.length,
