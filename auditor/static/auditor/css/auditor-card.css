@@ -7,3 +7,48 @@
     border-radius: 18px;
     box-shadow: 0 20px 50px #10182812;
 }
+
+/* ==========================================
+   TABS NAVIGATION
+   ========================================== */
+.tabs-nav {
+    display: inline-flex;
+    background: #edf2f7;
+    padding: 5px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    gap: 6px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    color: #1e293b;
+}
+
+.tab-btn.active {
+    background: #ffffff;
+    color: var(--blue, #2563eb);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================
+   TAB PANELS DISPLAY
+   ========================================== */
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}

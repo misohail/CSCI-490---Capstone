@@ -19,19 +19,40 @@
     <link rel="stylesheet" href="{% static 'auditor/css/action-buttons.css' %}">
     <link rel="stylesheet" href="{% static 'auditor/css/breach-result.css' %}">
     <link rel="stylesheet" href="{% static 'auditor/css/how-it-works.css' %}">
+    <link rel="stylesheet" href="{% static 'auditor/css/bulk-audit.css' %}">
 </head>
 <body>
     {% include 'auditor/components/navbar.html' %}
 
     <main class="wrap">
         {% include 'auditor/components/intro.html' %}
-        {% include 'auditor/components/auditor-card.html' %}
+
+        <!-- Tab Switcher Navigation -->
+        <div class="tabs-nav">
+            <button type="button" class="tab-btn active" data-tab="singleTab">
+                Password audit
+            </button>
+            <button type="button" class="tab-btn" data-tab="batchTab">
+                Batch password audit
+            </button>
+        </div>
+
+        <!-- Single Password Audit Panel -->
+        <div id="singleTab" class="tab-panel active">
+            {% include 'auditor/components/auditor-card.html' %}
+        </div>
+
+        <!-- Batch Password Audit Panel -->
+        <div id="batchTab" class="tab-panel">
+            {% include 'auditor/components/bulk-audit.html' %}
+        </div>
+
         {% include 'auditor/components/how_it_works.html' %}
     </main>
 
     {% include 'auditor/components/footer.html' %}
 
     <script src="{% static 'auditor/js/zxcvbn.js' %}"></script>
-    <script src="{% static 'auditor/js/app.js' %}"></script>
+    <script type="module" src="{% static 'auditor/js/app.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<section class="card">
+    <div class="card-header">
+        <h3>Batch Password Audit</h3>
+        <span class="badge">Privacy-first</span>
+    </div>
+    <p class="bulk-desc">Test multiple passwords at once (one per line). All evaluations and hash comparisons are performed locally in your browser.</p>
+
+    <div class="bulk-input-group">
+        <textarea id="bulkInput" rows="5" placeholder="Enter passwords, one per line:&#10;Admin123!&#10;Solar-Beacon-Granite-48&#10;qwerty88"></textarea>
+    </div>
+
+    <div class="actions">
+        <button type="button" id="bulkAuditBtn" class="primary">Audit Passwords</button>
+        <button type="button" id="bulkClearBtn" class="secondary">Clear</button>
+    </div>
+
+    <div id="bulkStatus" class="bulk-status hidden"></div>
+
+    <div id="bulkResultsContainer" class="bulk-results hidden">
+        <table class="bulk-table">
+            <thead>
+                <tr>
+                    <th>Password</th>
+                    <th>Strength</th>
+                    <th>Entropy</th>
+                    <th>Breach Status</th>
+                </tr>
+            </thead>
+            <tbody id="bulkResultsBody"></tbody>
+        </table>
+    </div>
+</section>
